@@ -8,8 +8,9 @@ E.g.:
 include('plugins/'.$pl['trigger'].'.php');
 
 */
-
-(array)$pl = json_decode($_POST['payload'],true);
+$post = file_get_contents('php://input');
+$pl = json_decode($post,true);
+//print_r($pl);
 $plugin_path = __DIR__ . "/plugins/".$pl['trigger'].".php";
 
 include_once($plugin_path);
